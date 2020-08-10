@@ -1,0 +1,10 @@
+header {
+  display: flex;
+  height: 400px;
+  width: 100%;
+  background-color: orange;
+  background-image: url("../images/beige-paper.png");
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

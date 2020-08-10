@@ -18,8 +18,47 @@ body {
   color: #545149;
   background-color: #f4f1ec;
   font-size: 24px;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+
+.container {
+  margin: 0 5% 0 5%;  
+  display: flex;
+  justify-content: center;
+}
+
+.new-tweet {
+  margin: 0 5% 0 5%;  
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.new-tweet div {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Bungee', cursive; 
+}
+
+.new-tweet textarea {
+  display: flex;
+  width: 100%;  
+  margin-bottom: 10px;
+  outline: none;
+  resize: none;
+  overflow: auto;
+  border: none;
+  border-bottom: solid 5px black;
+  font-weight: bold;
+  background-color: #f4f1ec;
+}
+
+.new-tweet button {
+  background-color: #4056A1;
+  color: #FFFFFF;
+}
