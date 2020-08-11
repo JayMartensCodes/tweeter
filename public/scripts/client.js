@@ -3,40 +3,12 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-
- // Test / driver code (temporary). Eventually will get this from the server.
- const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-];
-
-
-
 $(document).ready(function() {
   const loadTweets = () => {
     $.ajax('/tweets/', { method: 'GET'})
-    .then(function(response) {
-      renderTweets(response);
-    });
+      .then(function(response) {
+        renderTweets(response);
+      });
   };
 
   const renderTweets = (tweets) => {
@@ -51,10 +23,13 @@ $(document).ready(function() {
     $('#tweets-container').prepend($tweet);
   };
 
-  const createTweetElement = (tweet) => {
-    const tweetCreatedOn = new Date(tweet.created_at);
-    const currentDate = new Date();
-    const daysSinceTweet = (Math.floor((currentDate.getTime() - tweetCreatedOn.getTime()) / (1000 * 3600 * 24)));
+  const escape =  function(str) {
+    let div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
+
+  const createTweetElement = (tweet) => { 
     return (`
     <article>
     <header>
@@ -71,11 +46,11 @@ $(document).ready(function() {
       </div>
     </header>
     <div class="tweet-container">
-      ${tweet.content.text}
+      ${escape(tweet.content.text)}
     </div>
     <footer>
       <div>
-        ${daysSinceTweet} days ago
+        ${moment(tweet.created_at).fromNow()}
       </div>
       <div>
         <i class="fas fa-flag"></i><i class="fas fa-retweet"></i><i class="fas fa-heart"></i>
@@ -91,13 +66,20 @@ $(document).ready(function() {
     event.preventDefault();
     const tweetText = $('#tweet-text').val();
     const formData = $(this).serialize();
-    if (tweetText.length > 140 || !tweetText.length) {
-      alert("Invalid tweet!");
+    if (tweetText.length > 140) {
+      $('#tweet-submit-error').html("Tweet is too long!");
+      $('#tweet-submit-error').removeClass("hidden");
+    } else if (!tweetText.length) { 
+      $('#tweet-submit-error').html("Please enter some text to tweet!");
+      $('#tweet-submit-error').removeClass("hidden");
     } else {
+      $('#tweet-submit-error').addClass("hidden");
+      $('#tweet-submit-error').html("");
+      $('#tweet-text').val("");
       $.ajax('/tweets/', { method: 'POST', data: formData })
-      .then(function (tweet) {
-        loadTweets();
-      });
+        .then(function(response) {
+          loadTweets();
+        });
     }
   });
 });

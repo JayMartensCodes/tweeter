@@ -61,6 +61,7 @@ body {
 .new-tweet button {
   background-color: #4056A1;
   color: #FFFFFF;
+  cursor: pointer;
 }
 
 .red {
@@ -116,4 +117,13 @@ article header div {
 
 article footer i {
   padding-right: 10px;
+}
+
+.error-msg {
+  color: red;
+  font-size: 16px;
+}
+
+.hidden {
+  visibility: hidden;
 }

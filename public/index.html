@@ -19,6 +19,9 @@
     <script type="text/javascript" src="/scripts/client.js"></script>
     <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
 
+    <!-- Moment JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+
     <!-- FONT AWESOME -->
     <script src="https://kit.fontawesome.com/4f233eda04.js" crossorigin="anonymous"></script>
   </head>
@@ -42,6 +45,7 @@
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
         <form id="submit-tweet-form">
+          <label id="tweet-submit-error" class="error-msg"></label>
           <textarea name="text" rows="1" id="tweet-text" placeholder="What are you humming about?"></textarea>
           <div>
             <button type="submit" id="">Tweet</button>
