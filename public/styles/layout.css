@@ -6,7 +6,10 @@
 html {
   box-sizing: border-box;
 }
-*, *:before, *:after {
+
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
@@ -26,7 +29,7 @@ body {
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
 
-.container {    
+.container {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -42,11 +45,11 @@ body {
 .new-tweet div {
   display: flex;
   justify-content: space-between;
-  font-family: 'Bungee', cursive; 
+  font-family: 'Bungee', cursive;
 }
 
 .new-tweet textarea {
-  width: 100%;  
+  width: 100%;
   margin-bottom: 10px;
   outline: none;
   resize: none;
@@ -140,4 +143,4 @@ article footer i {
     flex-direction: row;
     justify-content: space-around;
   }
- }
+}

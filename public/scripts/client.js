@@ -3,10 +3,12 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-$(document).ready(function() {
+$(document).ready(function () {
   const loadTweets = () => {
-    $.ajax('/tweets/', { method: 'GET'})
-      .then(function(response) {
+    $.ajax('/tweets/', {
+        method: 'GET'
+      })
+      .then(function (response) {
         renderTweets(response);
       });
   };
@@ -23,7 +25,7 @@ $(document).ready(function() {
     $('#tweets-container').prepend($tweet);
   };
 
-  const escape =  function(str) {
+  const escape = function (str) {
     let div = document.createElement('div');
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
@@ -60,7 +62,7 @@ $(document).ready(function() {
     `);
   };
 
-  $('#submit-tweet-form').submit(function(event) {
+  $('#submit-tweet-form').submit(function (event) {
     event.preventDefault();
     const tweetText = $('#tweet-text').val();
     const formData = $(this).serialize();
@@ -73,15 +75,18 @@ $(document).ready(function() {
     } else {
       $('#tweet-submit-error').slideUp("slow");
       $('#tweet-text').val("");
-      $.ajax('/tweets/', { method: 'POST', data: formData })
-        .then(function(response) {
+      $.ajax('/tweets/', {
+          method: 'POST',
+          data: formData
+        })
+        .then(function (response) {
           loadTweets();
         });
     }
   });
 
-  $('#write-tweet').on('click', function() {
-    const $newTweet = $("#new-tweet")
+  $('#write-tweet').on('click', function () {
+    const $newTweet = $("#new-tweet");
     if ($newTweet.is(":hidden")) {
       $newTweet.slideDown("slow");
       $('#tweet-text').focus();
