@@ -84,10 +84,15 @@ $(document).ready(function() {
 
   $('#submit-tweet-form').submit(function(event) {
     event.preventDefault();
-    const formData = ($(this).serialize());
-    $.ajax('/tweets/', { method: 'POST', data: formData })
-    .then(function (response) {
-      console.log('Success: ', response);
-    });
+    const tweetText = $('#tweet-text').val();
+    const formData = $(this).serialize();
+    if (tweetText.length > 140 || !tweetText.length) {
+      alert("Invalid tweet!");
+    } else {
+      $.ajax('/tweets/', { method: 'POST', data: formData })
+      .then(function (response) {
+        console.log('Success: ', response);
+      });
+    }
   });
 });
