@@ -4,6 +4,8 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 $(document).ready(function () {
+
+  //make a request for the tweets then call the render function
   const loadTweets = () => {
     $.ajax('/tweets/', {
         method: 'GET'
@@ -12,25 +14,25 @@ $(document).ready(function () {
         renderTweets(response);
       });
   };
-
+  // renders all tweets
   const renderTweets = (tweets) => {
     const sortedTweets = tweets.sort((a, b) => a.created_at - b.created_at);
     for (const tweet of sortedTweets) {
       renderTweet(tweet);
     }
   };
-
+  // parses a tweet based on the template
   const renderTweet = (tweet) => {
     const $tweet = createTweetElement(tweet);
     $('#tweets-container').prepend($tweet);
   };
-
+  // escapes user inputed code to avoid XSS attacks
   const escape = function (str) {
     let div = document.createElement('div');
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
   };
-
+  // tweet template
   const createTweetElement = (tweet) => {
     return (`
     <article>
@@ -61,7 +63,7 @@ $(document).ready(function () {
   </article>
     `);
   };
-
+  // handles the form submit (validates, sends errors if neccesarry, posts if no errors) then reloads tweets
   $('#submit-tweet-form').submit(function (event) {
     event.preventDefault();
     const tweetText = $('#tweet-text').val();
@@ -84,7 +86,7 @@ $(document).ready(function () {
         });
     }
   });
-
+  // event handler for the write tweet button that shows and hides the new tweet form
   $('#write-tweet').on('click', function () {
     const $newTweet = $("#new-tweet");
     if ($newTweet.is(":hidden")) {
