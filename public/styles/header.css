@@ -1,4 +1,4 @@
-header {
+.main-header {
   display: flex;
   height: 400px;
   width: 100%;
@@ -7,4 +7,9 @@ header {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  color: #FFFFFF;
+}
+
+.main-header h2 {
+  font-weight: normal;
 }

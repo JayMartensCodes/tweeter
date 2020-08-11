@@ -19,6 +19,7 @@ body {
   background-color: #f4f1ec;
   font-size: 24px;
   font-family: 'Source Sans Pro', sans-serif;
+  padding-top: 120px;
 }
 
 /*
@@ -29,10 +30,10 @@ body {
   margin: 0 5% 0 5%;  
   display: flex;
   justify-content: center;
+  flex-direction: column;
 }
 
 .new-tweet {
-  margin: 0 5% 0 5%;  
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -46,7 +47,6 @@ body {
 }
 
 .new-tweet textarea {
-  display: flex;
   width: 100%;  
   margin-bottom: 10px;
   outline: none;
@@ -61,4 +61,58 @@ body {
 .new-tweet button {
   background-color: #4056A1;
   color: #FFFFFF;
+}
+
+.red {
+  color: red;
+}
+
+.handle {
+  visibility: hidden;
+  color: #add8e6;
+}
+
+main article:hover {
+  font-weight: bold;
+  box-shadow: 10px 10px 5px #add8e6;
+}
+
+main article:hover .handle {
+  visibility: visible;
+}
+
+main article {
+  margin-top: 50px;
+  border: solid 5px black;
+  padding: 10px;
+  font-weight: normal;
+}
+
+article footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  font-size: 16px;
+}
+
+article header {
+  display: flex;
+  justify-content: space-between;
+}
+
+article header div {
+  display: flex;
+  align-items: center;
+  padding-right: 15px;
+}
+
+.tweet-container {
+  display: flex;
+  border-bottom: solid 5px black;
+  padding: 20px;
+  font-weight: bold;
+}
+
+article footer i {
+  padding-right: 10px;
 }
