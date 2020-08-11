@@ -40,10 +40,15 @@ $(document).ready(function() {
   };
 
   const renderTweets = (tweets) => {
-    for (const tweet of tweets) {
-      const $tweet = createTweetElement(tweet);
-      $('#tweets-container').append($tweet);
+    const sortedTweets = tweets.sort((a, b) => a.created_at - b.created_at);
+    for (const tweet of sortedTweets) {
+      renderTweet(tweet);
     }
+  };
+
+  const renderTweet = (tweet) => {
+    const $tweet = createTweetElement(tweet);
+    $('#tweets-container').prepend($tweet);
   };
 
   const createTweetElement = (tweet) => {
@@ -90,8 +95,8 @@ $(document).ready(function() {
       alert("Invalid tweet!");
     } else {
       $.ajax('/tweets/', { method: 'POST', data: formData })
-      .then(function (response) {
-        console.log('Success: ', response);
+      .then(function (tweet) {
+        loadTweets();
       });
     }
   });
