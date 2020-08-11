@@ -9,8 +9,7 @@
   {
     "user": {
       "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
+      "avatars": "https://i.imgur.com/73hZDYK.png"      ,
       "handle": "@SirIsaac"
     },
     "content": {
@@ -28,9 +27,17 @@
     },
     "created_at": 1461113959088
   }
-]
+];
+
+
 
 $(document).ready(function() {
+  const loadTweets = () => {
+    $.ajax('/tweets/', { method: 'GET'})
+    .then(function(response) {
+      renderTweets(response);
+    });
+  };
 
   const renderTweets = (tweets) => {
     for (const tweet of tweets) {
@@ -73,5 +80,14 @@ $(document).ready(function() {
     `);
   };
 
-  renderTweets(data);
+  loadTweets();
+
+  $('#submit-tweet-form').submit(function(event) {
+    event.preventDefault();
+    const formData = ($(this).serialize());
+    $.ajax('/tweets/', { method: 'POST', data: formData })
+    .then(function (response) {
+      console.log('Success: ', response);
+    });
+  });
 });

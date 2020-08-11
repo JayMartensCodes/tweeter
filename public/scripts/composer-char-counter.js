@@ -1,6 +1,6 @@
 $(document).ready(function() {
   $("#tweet-text").on('keyup', function() {
-    const counter = $(this).parents().find('.counter');
+    const counter = $(this).parent().find('.counter');
     counter.val(140 - $(this).val().length);
     if (counter.val() < 0) {
       counter.addClass("red");
