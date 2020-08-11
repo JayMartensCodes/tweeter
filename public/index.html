@@ -1,51 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Meta Information -->
-    <title>Tweeter - Home Page</title>
 
-    <!-- External CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css" />
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@0,300;0,700;1,300;1,700&display=swap" rel="stylesheet">
-    <!-- App CSS -->
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/header.css" type="text/css" />
+<head>
+  <!-- Meta Information -->
+  <title>Tweeter - Home Page</title>
 
-    <!-- External JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- External CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    type="text/css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@0,300;0,700;1,300;1,700&display=swap"
+    rel="stylesheet">
+  <!-- App CSS -->
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/header.css" type="text/css" />
 
-    <!-- App JS -->
-    <script type="text/javascript" src="/scripts/client.js"></script>
-    <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
+  <!-- External JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-    <!-- Moment JS-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+  <!-- App JS -->
+  <script type="text/javascript" src="/scripts/client.js"></script>
+  <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
 
-    <!-- FONT AWESOME -->
-    <script src="https://kit.fontawesome.com/4f233eda04.js" crossorigin="anonymous"></script>
-  </head>
-  
-  <body>
-    <!-- Top nav bar (fixed) -->
-    <nav>
-      <span>tweeter</span>
-    </nav>
+  <!-- Moment JS-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+
+  <!-- FONT AWESOME -->
+  <script src="https://kit.fontawesome.com/4f233eda04.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <!-- Top nav bar (fixed) -->
+  <nav>
+    <span class="nav-logo">tweeter</span>
+    <span id="write-tweet" class="write-tweet"><strong>Write</strong> a new tweet</span>
+  </nav>
+  <!-- Page-specific (main) content here -->
+  <main class="container">
     <header class="main-header">
       <div>
-          <img src="/images/profile-hex.png"> 
+        <img src="/images/profile-hex.png">
       </div>
       <br>
       <div>
-          <h2><strong>Jay</strong> Martens</h2>
+        <h2><strong>Jay</strong> Martens</h2>
       </div>
-  </header>
-    <!-- Page-specific (main) content here -->
-    <main class="container">
-      <section class="new-tweet">
+    </header>
+    <div class="content-container">
+      <section id="new-tweet" class="new-tweet hidden">
         <h2>Compose Tweet</h2>
         <form id="submit-tweet-form">
-          <label id="tweet-submit-error" class="error-msg"></label>
+          <label id="tweet-submit-error" class="error-msg hidden">Place Holder Error</label>
           <textarea name="text" rows="1" id="tweet-text" placeholder="What are you humming about?"></textarea>
           <div>
             <button type="submit" id="">Tweet</button>
@@ -53,8 +59,10 @@
           </div>
         </form>
       </section>
-      <div id="tweets-container">
+      <div id="tweets-container" class="tweets-container">
       </div>
-    </main>
-  </body>
+    </div>
+  </main>
+</body>
+
 </html>

@@ -2,12 +2,19 @@ nav {
   height: 120px;
   width: 100%;
   background-color: #4056A1;
+  font-size: 30px;
   color: #FFFFFF;
   padding: 1.5em;
   position: fixed;
   top: 0;
+  display: flex;
+  justify-content: space-between;
 }
 
-nav span {
+.nav-logo {
   font-family: 'Bungee', cursive;
+}
+
+.write-tweet {
+  cursor: pointer;
 }
