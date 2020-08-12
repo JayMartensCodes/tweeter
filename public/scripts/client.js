@@ -16,6 +16,7 @@ $(document).ready(function () {
   };
   // renders all tweets
   const renderTweets = (tweets) => {
+    $('#tweets-container').empty();
     const sortedTweets = tweets.sort((a, b) => a.created_at - b.created_at);
     for (const tweet of sortedTweets) {
       renderTweet(tweet);
