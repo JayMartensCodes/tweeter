@@ -77,6 +77,7 @@ $(document).ready(function () {
     } else {
       $('#tweet-submit-error').slideUp("slow");
       $('#tweet-text').val("");
+      $('.counter').val(140);
       $.ajax('/tweets/', {
           method: 'POST',
           data: formData
